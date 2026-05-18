@@ -58,7 +58,7 @@ export default function Features() {
 
         .features-image img {
           width: 100%;
-          height: 85%;
+          height: 100%;
           object-fit: cover;
         //   object-position: center top;
           display: block;
