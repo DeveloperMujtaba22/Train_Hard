@@ -1,6 +1,7 @@
 // app/about/page.js
 import AboutPage from '../_components/AboutPage'
 import DynamicGym from '../_components/DynamicGym'
+import JoinBanner from '../_components/JoinBanner2'
 
 export const metadata = {
   title: 'About Us | PrimalTraining',
@@ -12,6 +13,7 @@ export default function About() {
     <>
       <AboutPage />
       <DynamicGym />
+      <JoinBanner/>
     </>
   )
 }

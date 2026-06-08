@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -39,7 +40,7 @@ export default function Header() {
         }}>
 
           {/* ── LOGO (left, bigger) ── */}
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flexShrink: 0, marginLeft: 24 }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flexShrink: 0, marginLeft: 24 }}>
             <svg width="46" height="30" viewBox="0 0 46 30" fill="none">
               <circle cx="15" cy="15" r="15" fill="#1A1525" />
               <circle cx="31" cy="15" r="15" fill="#1A1525" fillOpacity="0.65" />
@@ -47,11 +48,11 @@ export default function Header() {
             <span style={{ fontWeight: 700, fontSize: 22, letterSpacing: '-0.01em', color: '#1A1525', lineHeight: 1 }}>
               Primal<span style={{ color: '#6B4FE8' }}>Training</span>
             </span>
-          </a>
+          </Link>
 
           {/* ── NAV + CTA (right) ── */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <a
+            <Link
               href="/"
               style={{
                 fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
@@ -64,8 +65,9 @@ export default function Header() {
               onMouseLeave={() => setHovHome(false)}
             >
               Home
-            </a>
-            <a
+            </Link>
+
+            <Link
               href="/about"
               style={{
                 fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
@@ -78,16 +80,18 @@ export default function Header() {
               onMouseLeave={() => setHovAbout(false)}
             >
               About
-            </a>
+            </Link>
 
             <div style={{ width: 1, height: 20, background: 'rgba(107,79,232,0.22)', margin: '0 10px' }} />
 
-            <button
+            {/* ── Reserve Button → /Reserve page ── */}
+            <Link
+              href="/Reserve"
               style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: '#fff', background: '#6B4FE8',
-                border: 'none', borderRadius: 10, padding: '18px 26px',
-                cursor: 'pointer', whiteSpace: 'nowrap',
+                borderRadius: 10, padding: '18px 26px',
+                textDecoration: 'none', whiteSpace: 'nowrap', display: 'inline-block',
                 transform: hovBtn ? 'translateY(-2px)' : 'translateY(0)',
                 boxShadow: hovBtn
                   ? '0 8px 28px rgba(107,79,232,0.55)'
@@ -98,7 +102,7 @@ export default function Header() {
               onMouseLeave={() => setHovBtn(false)}
             >
               Reserve Your Spot
-            </button>
+            </Link>
           </div>
 
         </div>
