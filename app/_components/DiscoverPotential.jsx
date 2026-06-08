@@ -1,6 +1,6 @@
 'use client'
 
-export default function DiscoverPotential() {
+export default function DynamicGym() {
   return (
     <>
       <style>{`

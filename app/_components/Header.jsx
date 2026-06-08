@@ -39,7 +39,7 @@ export default function Header() {
         }}>
 
           {/* ── LOGO (left, bigger) ── */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flexShrink: 0, marginLeft: 24 }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flexShrink: 0, marginLeft: 24 }}>
             <svg width="46" height="30" viewBox="0 0 46 30" fill="none">
               <circle cx="15" cy="15" r="15" fill="#1A1525" />
               <circle cx="31" cy="15" r="15" fill="#1A1525" fillOpacity="0.65" />
@@ -52,7 +52,7 @@ export default function Header() {
           {/* ── NAV + CTA (right) ── */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <a
-              href="#"
+              href="/"
               style={{
                 fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
                 color: hovHome ? '#6B4FE8' : '#1A1525', textDecoration: 'none',
@@ -66,7 +66,7 @@ export default function Header() {
               Home
             </a>
             <a
-              href="#"
+              href="/about"
               style={{
                 fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
                 color: hovAbout ? '#6B4FE8' : '#1A1525', textDecoration: 'none',
