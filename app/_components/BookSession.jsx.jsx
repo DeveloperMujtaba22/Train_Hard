@@ -1,367 +1,426 @@
 "use client"
 
-import React, { useRef } from 'react' 
+import React, { useRef } from 'react'
 
 function BookSession() {
-    const formRef = useRef(null)
-    const sessionSelectRef = useRef(null)
+  const formRef = useRef(null)
+  const sessionSelectRef = useRef(null)
 
-    const handleReserve = (sessionValue) => {
-        if (sessionSelectRef.current) {
-            sessionSelectRef.current.value = sessionValue
-        }
-        if (formRef.current) {
-            formRef.current.scrollIntoView({ behavior: 'smooth' })
-        }
-    }
+  const handleReserve = (sessionValue) => {
+    if (sessionSelectRef.current) sessionSelectRef.current.value = sessionValue
+    if (formRef.current) formRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
 
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap');
 
-        .bs-wrap {
+        .bsn-wrap {
           font-family: 'DM Sans', sans-serif;
           background: white;
-          min-height: 100vh;
           color: #111;
+          min-height: 100vh;
         }
+        .bsn-bb { font-family: 'Bebas Neue', sans-serif; }
 
-        .bs-header {
-          border-bottom: 1px solid #cdd6f7;
-          padding: 20px 28px;
+        /* Hero */
+        .bsn-hero {
+          padding: 40px 28px 36px;
+          border-bottom: 1px solid #e0e4f8;
         }
-
-        .bs-title {
+        .bsn-eyebrow {
+          font-size: 11px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          color: #888;
+          margin: 0 0 10px;
+        }
+        .bsn-h1 {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(2rem, 6vw, 3rem);
-          letter-spacing: 0.04em;
-          line-height: 1;
+          font-size: clamp(3rem, 9vw, 5.5rem);
+          line-height: .95;
+          margin: 0 0 16px;
+        }
+        .bsn-h1 em { font-style: normal; color: #7B8FF5; }
+        .bsn-hero-sub {
+          font-size: 13px;
+          color: #555;
+          max-width: 420px;
+          line-height: 1.65;
           margin: 0;
         }
 
-        .bs-title .accent {
-          color: #7B8FF5;
-        }
-
-        .bs-cards {
+        /* Session cards */
+        .bsn-cards {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          border-bottom: 1px solid #cdd6f7;
+          border-bottom: 1px solid #e0e4f8;
         }
-
-        @media (max-width: 640px) {
-          .bs-cards {
-            grid-template-columns: 1fr;
-          }
-          .bs-card {
-            border-right: none !important;
-            border-bottom: 1px solid #cdd6f7;
-          }
-          .bs-row {
-            grid-template-columns: 1fr !important;
-          }
-        }
-
-        .bs-card {
-          border-right: 1px solid #cdd6f7;
-          padding: 24px 22px 28px;
+        .bsn-card {
+          padding: 20px 20px 24px;
+          border-right: 1px solid #e0e4f8;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
         }
-
-        .bs-card:last-child {
-          border-right: none;
+        .bsn-card:last-child { border-right: none; }
+        .bsn-card-num {
+          font-size: 11px;
+          color: #aaa;
+          letter-spacing: .12em;
         }
-
-        .bs-card-title {
+        .bsn-card-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.35rem;
-          letter-spacing: 0.05em;
-          color: #111;
+          font-size: 1.25rem;
+          line-height: 1;
+          letter-spacing: .04em;
           margin: 0;
         }
-
-        .bs-card-time {
+        .bsn-card-time {
+          font-size: 11px;
+          color: #666;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #e0e4f8;
+        }
+        .bsn-card-desc {
           font-size: 12px;
           color: #555;
-          padding-bottom: 8px;
-          border-bottom: 1px solid #dde2fb;
-        }
-
-        .bs-card-desc {
-          font-size: 12.5px;
-          color: #444;
           line-height: 1.6;
           flex: 1;
+          margin: 0;
         }
-
-        .bs-reserve-btn {
-          margin-top: 10px;
-          border: 1px solid #aab3f7;
-          background: #f0f2fd;
-          color: #5060c8;
+        .bsn-card-btn {
+          margin-top: 6px;
+          border: 1px solid #ccd0f0;
+          background: transparent;
+          color: #111;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 0.8rem;
-          letter-spacing: 0.12em;
-          padding: 9px 0;
+          font-size: .72rem;
+          letter-spacing: .14em;
+          padding: 8px 0;
           width: 100%;
           cursor: pointer;
-          transition: background 0.15s, color 0.15s, border-color 0.15s;
+          border-radius: 6px;
+          transition: background .12s, color .12s, border-color .12s;
         }
-
-        .bs-reserve-btn:hover {
+        .bsn-card-btn:hover {
           background: #7B8FF5;
-          color: white;
+          color: #fff;
           border-color: #7B8FF5;
         }
 
-        .bs-promo {
+        /* Personal training strip */
+        .bsn-pt-strip {
           background: #7B8FF5;
-          padding: 36px 28px;
-          text-align: center;
+          padding: 24px 28px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 16px;
         }
-
-        .bs-promo-title {
+        .bsn-pt-eye {
+          font-size: 11px;
+          letter-spacing: .16em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,.65);
+          margin: 0 0 4px;
+        }
+        .bsn-pt-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.8rem;
-          letter-spacing: 0.05em;
-          color: white;
-          margin: 0 0 8px;
+          font-size: clamp(1.5rem, 4vw, 2.2rem);
+          line-height: 1;
+          color: #fff;
+          margin: 0;
         }
-
-        .bs-promo-sub {
-          font-size: 13px;
-          color: rgba(255,255,255,0.88);
-          max-width: 380px;
-          margin: 0 auto 18px;
-          line-height: 1.6;
-        }
-
-        .bs-promo-btn {
-          border: 1px solid rgba(255,255,255,0.6);
+        .bsn-pt-btn {
+          border: 1px solid rgba(255,255,255,.55);
           background: transparent;
-          color: white;
+          color: #fff;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 0.85rem;
-          letter-spacing: 0.12em;
-          padding: 10px 28px;
+          font-size: .75rem;
+          letter-spacing: .14em;
+          padding: 10px 20px;
           cursor: pointer;
-          transition: background 0.15s;
+          border-radius: 6px;
+          white-space: nowrap;
+          flex-shrink: 0;
+          transition: background .12s;
         }
+        .bsn-pt-btn:hover { background: rgba(255,255,255,.15); }
 
-        .bs-promo-btn:hover {
-          background: rgba(255,255,255,0.15);
+        /* Split form section */
+        .bsn-split {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
         }
-
-        .bs-form-wrap {
-          max-width: 580px;
-          margin: 0 auto;
-          padding: 40px 28px 60px;
+        .bsn-form-col {
+          padding: 36px 28px 52px;
+          border-right: 1px solid #e0e4f8;
         }
-
-        .bs-form-title {
+        .bsn-info-col {
+          padding: 36px 28px 52px;
+        }
+        .bsn-big-lbl {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.6rem;
-          letter-spacing: 0.06em;
-          color: #111;
-          margin: 0 0 32px;
+          font-size: clamp(2rem, 5.5vw, 3.4rem);
+          line-height: .95;
+          letter-spacing: .02em;
+          margin: 0 0 28px;
         }
+        .bsn-big-lbl em { font-style: normal; color: #7B8FF5; }
 
-        .bs-field {
+        /* Form fields */
+        .bsn-field {
           display: flex;
           flex-direction: column;
           gap: 4px;
-          margin-bottom: 24px;
+          margin-bottom: 18px;
         }
-
-        .bs-label {
-          font-size: 10.5px;
-          font-weight: 500;
-          letter-spacing: 0.14em;
+        .bsn-lbl {
+          font-size: 10px;
+          letter-spacing: .18em;
           text-transform: uppercase;
-          color: #888;
+          color: #999;
+          font-weight: 500;
         }
-
-        .bs-input,
-        .bs-select,
-        .bs-textarea {
+        .bsn-input,
+        .bsn-select,
+        .bsn-ta {
           border: none;
           border-bottom: 1px solid #ddd;
-          padding: 9px 0;
+          padding: 8px 0;
           font-size: 13.5px;
           color: #111;
           background: transparent;
           outline: none;
           font-family: 'DM Sans', sans-serif;
-          transition: border-color 0.15s;
+          transition: border-color .12s;
           width: 100%;
         }
-
-        .bs-input:focus,
-        .bs-select:focus,
-        .bs-textarea:focus {
-          border-bottom-color: #111;
-        }
-
-        .bs-select {
-          appearance: none;
-          cursor: pointer;
-        }
-
-        .bs-textarea {
-          resize: none;
-        }
-
-        .bs-row {
+        .bsn-input:focus,
+        .bsn-select:focus,
+        .bsn-ta:focus { border-bottom-color: #111; }
+        .bsn-select { appearance: none; cursor: pointer; }
+        .bsn-ta { resize: none; }
+        .bsn-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 20px;
+          gap: 14px;
         }
-
-        .bs-submit {
+        .bsn-submit {
           width: 100%;
-          padding: 16px;
+          padding: 14px;
           background: #111;
-          color: white;
+          color: #fff;
           border: none;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.1rem;
-          letter-spacing: 0.12em;
+          font-size: 1.05rem;
+          letter-spacing: .14em;
           cursor: pointer;
-          margin-top: 8px;
-          transition: background 0.15s;
+          margin-top: 10px;
+          border-radius: 6px;
+          transition: opacity .12s;
+        }
+        .bsn-submit:hover { opacity: .8; }
+
+        /* Expect items */
+        .bsn-expect-item {
+          display: flex;
+          gap: 14px;
+          align-items: flex-start;
+          margin-bottom: 20px;
+        }
+        .bsn-expect-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 1px solid #e0e4f8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .bsn-expect-name {
+          font-size: 13px;
+          font-weight: 500;
+          margin: 0 0 3px;
+        }
+        .bsn-expect-desc {
+          font-size: 12px;
+          color: #666;
+          line-height: 1.6;
+          margin: 0;
         }
 
-        .bs-submit:hover {
-          background: #333;
+        /* Responsive */
+        @media (max-width: 640px) {
+          .bsn-cards { grid-template-columns: 1fr; }
+          .bsn-card { border-right: none; border-bottom: 1px solid #e0e4f8; }
+          .bsn-split { grid-template-columns: 1fr; }
+          .bsn-form-col { border-right: none; border-bottom: 1px solid #e0e4f8; }
+          .bsn-row { grid-template-columns: 1fr; }
         }
       `}</style>
 
-            <main className="bs-wrap">
+      <main className="bsn-wrap">
 
-                {/* Header */}
-                <div className="bs-header">
-                    <h1 className="bs-title">
-                        BOOK A <span className="accent">SESSION</span>
-                    </h1>
+        {/* Hero */}
+        <div className="bsn-hero">
+          <p className="bsn-eyebrow">Primal Fitness — Training Sessions</p>
+          <h1 className="bsn-h1">BOOK YOUR <em>SESSION</em></h1>
+          <p className="bsn-hero-sub">
+            Choose a session type below, then fill out your details. We'll confirm your spot within 24 hours.
+          </p>
+        </div>
+
+        {/* Session Cards */}
+        <div className="bsn-cards">
+          {[
+            {
+              num: '01',
+              title: 'STRENGTH',
+              time: 'Weekdays 6AM · Weekends & Holidays 8AM',
+              desc: 'Build raw power with comprehensive weightlifting and strength training programs.',
+              value: 'strength',
+            },
+            {
+              num: '02',
+              title: 'CONDITIONING',
+              time: 'Weekdays 8AM · Weekends & Holidays 10AM',
+              desc: 'Push your limits with high-intensity workouts that build cardiovascular endurance.',
+              value: 'conditioning',
+            },
+            {
+              num: '03',
+              title: 'COMMUNITY CLASSES',
+              time: 'Every day on the hour',
+              desc: 'Experience collective effort with our custom Workout of the Day alongside like-minded people.',
+              value: 'community',
+            },
+          ].map((s) => (
+            <div className="bsn-card" key={s.value}>
+              <span className="bsn-card-num">{s.num}</span>
+              <p className="bsn-card-title">{s.title}</p>
+              <div className="bsn-card-time">{s.time}</div>
+              <p className="bsn-card-desc">{s.desc}</p>
+              <button className="bsn-card-btn" onClick={() => handleReserve(s.value)}>
+                RESERVE YOUR SPOT
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Personal Training Strip */}
+        <div className="bsn-pt-strip">
+          <div>
+            <p className="bsn-pt-eye">1-on-1 Coaching</p>
+            <p className="bsn-pt-title">PERSONAL TRAINING</p>
+          </div>
+          <button className="bsn-pt-btn" onClick={() => handleReserve('personal')}>
+            RESERVE YOUR SPOT
+          </button>
+        </div>
+
+        {/* Split: Form + Info */}
+        <div className="bsn-split" ref={formRef}>
+
+          {/* Form */}
+          <div className="bsn-form-col">
+            <h2 className="bsn-big-lbl">YOUR<br /><em>DETAILS</em></h2>
+
+            <div className="bsn-row">
+              <div className="bsn-field">
+                <label className="bsn-lbl">Full Name</label>
+                <input className="bsn-input" type="text" placeholder="John Doe" />
+              </div>
+              <div className="bsn-field">
+                <label className="bsn-lbl">Email</label>
+                <input className="bsn-input" type="email" placeholder="you@example.com" />
+              </div>
+            </div>
+
+            <div className="bsn-row">
+              <div className="bsn-field">
+                <label className="bsn-lbl">Phone</label>
+                <input className="bsn-input" type="tel" placeholder="+1 000 000 0000" />
+              </div>
+              <div className="bsn-field">
+                <label className="bsn-lbl">Session Type</label>
+                <select className="bsn-select" ref={sessionSelectRef}>
+                  <option value="">Select a session</option>
+                  <option value="strength">Strength</option>
+                  <option value="conditioning">Conditioning</option>
+                  <option value="community">Community Classes</option>
+                  <option value="personal">Personal Training</option>
+                  <option value="open">Open Gym</option>
+                  <option value="online">Online Coaching</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="bsn-row">
+              <div className="bsn-field">
+                <label className="bsn-lbl">Preferred Date</label>
+                <input className="bsn-input" type="date" />
+              </div>
+              <div className="bsn-field">
+                <label className="bsn-lbl">Preferred Time</label>
+                <input className="bsn-input" type="time" />
+              </div>
+            </div>
+
+            <div className="bsn-field">
+              <label className="bsn-lbl">Additional Notes</label>
+              <textarea className="bsn-ta" rows={3} placeholder="Injuries, goals, questions..." />
+            </div>
+
+            <button className="bsn-submit">CONFIRM BOOKING</button>
+          </div>
+
+          {/* What to Expect */}
+          <div className="bsn-info-col">
+            <h2 className="bsn-big-lbl">WHAT TO<br /><em>EXPECT</em></h2>
+
+            {[
+              {
+                icon: '✉',
+                name: 'Confirmation email',
+                desc: "You'll receive a booking confirmation within 24 hours of submitting.",
+              },
+              {
+                icon: '⏱',
+                name: 'Arrive 10 mins early',
+                desc: 'Give yourself time to warm up and check in with your coach before the session starts.',
+              },
+              {
+                icon: '🎒',
+                name: 'What to bring',
+                desc: 'Water bottle, training shoes, and a towel. All equipment is provided on-site.',
+              },
+              {
+                icon: '✕',
+                name: 'Cancellations',
+                desc: 'Cancel or reschedule up to 12 hours before your session at no charge.',
+              },
+            ].map((item) => (
+              <div className="bsn-expect-item" key={item.name}>
+                <div className="bsn-expect-icon">
+                  <span style={{ fontSize: 14, color: '#888' }}>{item.icon}</span>
                 </div>
-
-                {/* Session Cards */}
-                <div className="bs-cards">
-                    <div className="bs-card">
-                        <p className="bs-card-title">STRENGTH</p>
-                        <div className="bs-card-time">
-                            <div>Weekdays at 6AM</div>
-                            <div style={{ marginTop: 4 }}>Weekends and Holidays at 8AM</div>
-                        </div>
-                        <p className="bs-card-desc">
-                            Build a foundation of raw power with our comprehensive weightlifting and strength training programs.
-                        </p>
-                        <button className="bs-reserve-btn" onClick={() => handleReserve('strength')}>
-                            RESERVE YOUR SPOT
-                        </button>
-                    </div>
-
-                    <div className="bs-card">
-                        <p className="bs-card-title">CONDITIONING</p>
-                        <div className="bs-card-time">
-                            <div>Weekdays at 8AM</div>
-                            <div style={{ marginTop: 4 }}>Weekends and Holidays at 10AM</div>
-                        </div>
-                        <p className="bs-card-desc">
-                            Push your limits with high-intensity workouts that challenge your cardiovascular endurance and build functional fitness.
-                        </p>
-                        <button className="bs-reserve-btn" onClick={() => handleReserve('conditioning')}>
-                            RESERVE YOUR SPOT
-                        </button>
-                    </div>
-
-                    <div className="bs-card">
-                        <p className="bs-card-title">COMMUNITY CLASSES</p>
-                        <div className="bs-card-time">
-                            <div>Every day on the hour</div>
-                        </div>
-                        <p className="bs-card-desc">
-                            Experience the power of collective effort with our custom Workout of the Day. Push your limits alongside like-minded individuals.
-                        </p>
-                        <button className="bs-reserve-btn" onClick={() => handleReserve('community')}>
-                            RESERVE YOUR SPOT
-                        </button>
-                    </div>
+                <div>
+                  <p className="bsn-expect-name">{item.name}</p>
+                  <p className="bsn-expect-desc">{item.desc}</p>
                 </div>
+              </div>
+            ))}
+          </div>
 
-                {/* Promo Banner */}
-                <div className="bs-promo">
-                    <p className="bs-promo-title">PRIMAL PERSONAL TRAINING</p>
-                    <p className="bs-promo-sub">
-                        Receive personalized guidance and tailored programs designed to unlock your individual primal potential. Our expert coaches will guide you every step of the way.
-                    </p>
-                    <button className="bs-promo-btn" onClick={() => handleReserve('personal')}>
-                        RESERVE YOUR SPOT
-                    </button>
-                </div>
-
-                {/* Booking Form */}
-                <div className="bs-form-wrap" ref={formRef}>
-                    <p className="bs-form-title">YOUR DETAILS</p>
-
-                    <div className="bs-row">
-                        <div className="bs-field">
-                            <label className="bs-label">Full Name</label>
-                            <input className="bs-input" type="text" placeholder="John Doe" />
-                        </div>
-                        <div className="bs-field">
-                            <label className="bs-label">Email</label>
-                            <input className="bs-input" type="email" placeholder="you@example.com" />
-                        </div>
-                    </div>
-
-                    <div className="bs-row">
-                        <div className="bs-field">
-                            <label className="bs-label">Phone Number</label>
-                            <input className="bs-input" type="tel" placeholder="+1 000 000 0000" />
-                        </div>
-                        <div className="bs-field">
-                            <label className="bs-label">Session Type</label>
-                            <select className="bs-select" ref={sessionSelectRef}>
-                                <option value="">Select a session</option>
-                                <option value="strength">Strength</option>
-                                <option value="conditioning">Conditioning</option>
-                                <option value="community">Community Classes</option>
-                                <option value="personal">Personal Training</option>
-                                <option value="open">Open Gym</option>
-                                <option value="online">Online Coaching</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="bs-row">
-                        <div className="bs-field">
-                            <label className="bs-label">Preferred Date</label>
-                            <input className="bs-input" type="date" />
-                        </div>
-                        <div className="bs-field">
-                            <label className="bs-label">Preferred Time</label>
-                            <input className="bs-input" type="time" />
-                        </div>
-                    </div>
-
-                    <div className="bs-field">
-                        <label className="bs-label">Additional Notes</label>
-                        <textarea
-                            className="bs-textarea"
-                            rows={3}
-                            placeholder="Any injuries, goals, or questions..." />
-                    </div>
-
-                    <button className="bs-submit">CONFIRM BOOKING</button>
-                </div>
-
-            </main>
-        </>
-    )
+        </div>
+      </main>
+    </>
+  )
 }
 
 export default BookSession
