@@ -44,7 +44,7 @@ function BookSession() {
         }
         .bsn-h1 em { font-style: normal; color: #7B8FF5; }
         .bsn-hero-sub {
-          font-size: 13px;
+          font-size: 15px;
           color: #555;
           max-width: 420px;
           line-height: 1.65;
@@ -62,29 +62,29 @@ function BookSession() {
           border-right: 1px solid #e0e4f8;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 28px;
         }
         .bsn-card:last-child { border-right: none; }
         .bsn-card-num {
-          font-size: 11px;
+          font-size: 16px;
           color: #aaa;
           letter-spacing: .12em;
         }
         .bsn-card-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.25rem;
+          font-size: 2.25rem;
           line-height: 1;
           letter-spacing: .04em;
           margin: 0;
         }
         .bsn-card-time {
-          font-size: 11px;
+          font-size: 16px;
           color: #666;
           padding-bottom: 8px;
           border-bottom: 1px solid #e0e4f8;
         }
         .bsn-card-desc {
-          font-size: 12px;
+          font-size: 18px;
           color: #555;
           line-height: 1.6;
           flex: 1;
@@ -92,11 +92,11 @@ function BookSession() {
         }
         .bsn-card-btn {
           margin-top: 6px;
-          border: 1px solid #ccd0f0;
+          border: 2px solid #ccd0f0;
           background: transparent;
           color: #111;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: .72rem;
+          font-size: 1.2rem;
           letter-spacing: .14em;
           padding: 8px 0;
           width: 100%;
@@ -121,7 +121,7 @@ function BookSession() {
           gap: 16px;
         }
         .bsn-pt-eye {
-          font-size: 11px;
+          font-size: 15px;
           letter-spacing: .16em;
           text-transform: uppercase;
           color: rgba(255,255,255,.65);
@@ -129,7 +129,7 @@ function BookSession() {
         }
         .bsn-pt-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(1.5rem, 4vw, 2.2rem);
+          font-size: clamp(5.5rem, 4vw, 2.2rem);
           line-height: 1;
           color: #fff;
           margin: 0;
@@ -139,7 +139,7 @@ function BookSession() {
           background: transparent;
           color: #fff;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: .75rem;
+          font-size: 2.30rem;
           letter-spacing: .14em;
           padding: 10px 20px;
           cursor: pointer;
@@ -164,7 +164,7 @@ function BookSession() {
         }
         .bsn-big-lbl {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(2rem, 5.5vw, 3.4rem);
+          font-size: clamp(3rem, 5.5vw, 3.4rem);
           line-height: .95;
           letter-spacing: .02em;
           margin: 0 0 28px;
@@ -179,11 +179,11 @@ function BookSession() {
           margin-bottom: 18px;
         }
         .bsn-lbl {
-          font-size: 10px;
+          font-size: 14px;
           letter-spacing: .18em;
           text-transform: uppercase;
-          color: #999;
-          font-weight: 500;
+          color: #000;
+          font-weight: 900;
         }
         .bsn-input,
         .bsn-select,
@@ -191,7 +191,7 @@ function BookSession() {
           border: none;
           border-bottom: 1px solid #ddd;
           padding: 8px 0;
-          font-size: 13.5px;
+          font-size: 20.5px;
           color: #111;
           background: transparent;
           outline: none;
@@ -216,7 +216,7 @@ function BookSession() {
           color: #fff;
           border: none;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.05rem;
+          font-size: 1.65rem;
           letter-spacing: .14em;
           cursor: pointer;
           margin-top: 10px;
@@ -243,12 +243,12 @@ function BookSession() {
           flex-shrink: 0;
         }
         .bsn-expect-name {
-          font-size: 13px;
+          font-size: 20px;
           font-weight: 500;
           margin: 0 0 3px;
         }
         .bsn-expect-desc {
-          font-size: 12px;
+          font-size: 17px;
           color: #666;
           line-height: 1.6;
           margin: 0;
