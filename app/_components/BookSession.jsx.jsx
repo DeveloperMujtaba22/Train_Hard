@@ -2,6 +2,53 @@
 
 import React, { useRef } from 'react'
 
+const SESSIONS = [
+  {
+    num: '01',
+    title: 'STRENGTH',
+    time: 'Weekdays 6AM · Weekends & Holidays 8AM',
+    desc: 'Build raw power with comprehensive weightlifting and strength training programs.',
+    value: 'strength',
+  },
+  {
+    num: '02',
+    title: 'CONDITIONING',
+    time: 'Weekdays 8AM · Weekends & Holidays 10AM',
+    desc: 'Push your limits with high-intensity workouts that build cardiovascular endurance.',
+    value: 'conditioning',
+  },
+  {
+    num: '03',
+    title: 'COMMUNITY CLASSES',
+    time: 'Every day on the hour',
+    desc: 'Experience collective effort with our custom Workout of the Day alongside like-minded people.',
+    value: 'community',
+  },
+]
+
+const EXPECT_ITEMS = [
+  {
+    icon: '✉',
+    name: 'Confirmation email',
+    desc: "You'll receive a booking confirmation within 24 hours of submitting.",
+  },
+  {
+    icon: '⏱',
+    name: 'Arrive 10 mins early',
+    desc: 'Give yourself time to warm up and check in with your coach before the session starts.',
+  },
+  {
+    icon: '🎒',
+    name: 'What to bring',
+    desc: 'Water bottle, training shoes, and a towel. All equipment is provided on-site.',
+  },
+  {
+    icon: '✕',
+    name: 'Cancellations',
+    desc: 'Cancel or reschedule up to 12 hours before your session at no charge.',
+  },
+]
+
 function BookSession() {
   const formRef = useRef(null)
   const sessionSelectRef = useRef(null)
@@ -16,15 +63,15 @@ function BookSession() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap');
 
+        /* ── Reset / base ── */
         .bsn-wrap {
           font-family: 'DM Sans', sans-serif;
           background: white;
           color: #111;
           min-height: 100vh;
         }
-        .bsn-bb { font-family: 'Bebas Neue', sans-serif; }
 
-        /* Hero */
+        /* ── Hero ── */
         .bsn-hero {
           padding: 40px 28px 36px;
           border-bottom: 1px solid #e0e4f8;
@@ -51,7 +98,7 @@ function BookSession() {
           margin: 0;
         }
 
-        /* Session cards */
+        /* ── Session cards ── */
         .bsn-cards {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -62,29 +109,29 @@ function BookSession() {
           border-right: 1px solid #e0e4f8;
           display: flex;
           flex-direction: column;
-          gap: 28px;
+          gap: 14px;
         }
         .bsn-card:last-child { border-right: none; }
         .bsn-card-num {
-          font-size: 16px;
+          font-size: 12px;
           color: #aaa;
           letter-spacing: .12em;
         }
         .bsn-card-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 2.25rem;
+          font-size: 2rem;
           line-height: 1;
           letter-spacing: .04em;
           margin: 0;
         }
         .bsn-card-time {
-          font-size: 16px;
+          font-size: 12px;
           color: #666;
           padding-bottom: 8px;
           border-bottom: 1px solid #e0e4f8;
         }
         .bsn-card-desc {
-          font-size: 18px;
+          font-size: 14px;
           color: #555;
           line-height: 1.6;
           flex: 1;
@@ -92,25 +139,27 @@ function BookSession() {
         }
         .bsn-card-btn {
           margin-top: 6px;
-          border: 2px solid #ccd0f0;
+          border: 1.5px solid #ccd0f0;
           background: transparent;
           color: #111;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.2rem;
+          font-size: 1rem;
           letter-spacing: .14em;
           padding: 8px 0;
           width: 100%;
           cursor: pointer;
           border-radius: 6px;
-          transition: background .12s, color .12s, border-color .12s;
+          transition: background .15s, color .15s, border-color .15s, transform .1s;
         }
         .bsn-card-btn:hover {
           background: #7B8FF5;
           color: #fff;
           border-color: #7B8FF5;
+          transform: translateY(-1px);
         }
+        .bsn-card-btn:active { transform: translateY(0); }
 
-        /* Personal training strip */
+        /* ── Personal training strip ── */
         .bsn-pt-strip {
           background: #7B8FF5;
           padding: 24px 28px;
@@ -121,7 +170,7 @@ function BookSession() {
           gap: 16px;
         }
         .bsn-pt-eye {
-          font-size: 15px;
+          font-size: 12px;
           letter-spacing: .16em;
           text-transform: uppercase;
           color: rgba(255,255,255,.65);
@@ -129,7 +178,7 @@ function BookSession() {
         }
         .bsn-pt-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(5.5rem, 4vw, 2.2rem);
+          font-size: clamp(1.8rem, 4vw, 2.4rem);
           line-height: 1;
           color: #fff;
           margin: 0;
@@ -139,18 +188,22 @@ function BookSession() {
           background: transparent;
           color: #fff;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 2.30rem;
+          font-size: 1.2rem;
           letter-spacing: .14em;
           padding: 10px 20px;
           cursor: pointer;
           border-radius: 6px;
           white-space: nowrap;
           flex-shrink: 0;
-          transition: background .12s;
+          transition: background .15s, transform .1s;
         }
-        .bsn-pt-btn:hover { background: rgba(255,255,255,.15); }
+        .bsn-pt-btn:hover {
+          background: rgba(255,255,255,.15);
+          transform: translateY(-1px);
+        }
+        .bsn-pt-btn:active { transform: translateY(0); }
 
-        /* Split form section */
+        /* ── Split: form + info ── */
         .bsn-split {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -164,14 +217,14 @@ function BookSession() {
         }
         .bsn-big-lbl {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(3rem, 5.5vw, 3.4rem);
+          font-size: clamp(2.4rem, 5vw, 3.2rem);
           line-height: .95;
           letter-spacing: .02em;
           margin: 0 0 28px;
         }
         .bsn-big-lbl em { font-style: normal; color: #7B8FF5; }
 
-        /* Form fields */
+        /* ── Form fields ── */
         .bsn-field {
           display: flex;
           flex-direction: column;
@@ -179,11 +232,11 @@ function BookSession() {
           margin-bottom: 18px;
         }
         .bsn-lbl {
-          font-size: 14px;
+          font-size: 11px;
           letter-spacing: .18em;
           text-transform: uppercase;
           color: #999;
-          font-weight: 900;
+          font-weight: 500;
         }
         .bsn-input,
         .bsn-select,
@@ -191,12 +244,12 @@ function BookSession() {
           border: none;
           border-bottom: 1px solid #ddd;
           padding: 8px 0;
-          font-size: 20.5px;
+          font-size: 16px;
           color: #111;
           background: transparent;
           outline: none;
           font-family: 'DM Sans', sans-serif;
-          transition: border-color .12s;
+          transition: border-color .15s;
           width: 100%;
         }
         .bsn-input:focus,
@@ -216,16 +269,17 @@ function BookSession() {
           color: #fff;
           border: none;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.65rem;
+          font-size: 1.5rem;
           letter-spacing: .14em;
           cursor: pointer;
           margin-top: 10px;
           border-radius: 6px;
-          transition: opacity .12s;
+          transition: opacity .15s, transform .1s;
         }
-        .bsn-submit:hover { opacity: .8; }
+        .bsn-submit:hover { opacity: .8; transform: translateY(-1px); }
+        .bsn-submit:active { transform: translateY(0); }
 
-        /* Expect items */
+        /* ── What to expect ── */
         .bsn-expect-item {
           display: flex;
           gap: 14px;
@@ -243,24 +297,53 @@ function BookSession() {
           flex-shrink: 0;
         }
         .bsn-expect-name {
-          font-size: 20px;
+          font-size: 15px;
           font-weight: 500;
           margin: 0 0 3px;
         }
         .bsn-expect-desc {
-          font-size: 17px;
+          font-size: 13px;
           color: #666;
           line-height: 1.6;
           margin: 0;
         }
 
-        /* Responsive */
+        /* ── Responsive ── */
         @media (max-width: 640px) {
+          .bsn-hero { padding: 28px 20px 24px; }
           .bsn-cards { grid-template-columns: 1fr; }
-          .bsn-card { border-right: none; border-bottom: 1px solid #e0e4f8; }
+          .bsn-card {
+            border-right: none;
+            border-bottom: 1px solid #e0e4f8;
+          }
+          .bsn-card:last-child { border-bottom: none; }
+          .bsn-pt-strip { flex-direction: column; align-items: flex-start; }
+          .bsn-pt-btn { width: 100%; text-align: center; }
           .bsn-split { grid-template-columns: 1fr; }
-          .bsn-form-col { border-right: none; border-bottom: 1px solid #e0e4f8; }
-          .bsn-row { grid-template-columns: 1fr; }
+          .bsn-form-col {
+            border-right: none;
+            border-bottom: 1px solid #e0e4f8;
+            padding: 28px 20px 36px;
+          }
+          .bsn-info-col { padding: 28px 20px 36px; }
+          .bsn-row { grid-template-columns: 1fr; gap: 0; }
+        }
+
+        @media (min-width: 641px) and (max-width: 860px) {
+          .bsn-card-title { font-size: 1.6rem; }
+          .bsn-card-desc { font-size: 12px; }
+          .bsn-card-time { font-size: 11px; }
+          .bsn-big-lbl { font-size: clamp(2rem, 4vw, 2.6rem); }
+        }
+
+        /* ── Reduced motion ── */
+        @media (prefers-reduced-motion: reduce) {
+          .bsn-card-btn,
+          .bsn-pt-btn,
+          .bsn-submit {
+            transition: none;
+            transform: none !important;
+          }
         }
       `}</style>
 
@@ -277,29 +360,7 @@ function BookSession() {
 
         {/* Session Cards */}
         <div className="bsn-cards">
-          {[
-            {
-              num: '01',
-              title: 'STRENGTH',
-              time: 'Weekdays 6AM · Weekends & Holidays 8AM',
-              desc: 'Build raw power with comprehensive weightlifting and strength training programs.',
-              value: 'strength',
-            },
-            {
-              num: '02',
-              title: 'CONDITIONING',
-              time: 'Weekdays 8AM · Weekends & Holidays 10AM',
-              desc: 'Push your limits with high-intensity workouts that build cardiovascular endurance.',
-              value: 'conditioning',
-            },
-            {
-              num: '03',
-              title: 'COMMUNITY CLASSES',
-              time: 'Every day on the hour',
-              desc: 'Experience collective effort with our custom Workout of the Day alongside like-minded people.',
-              value: 'community',
-            },
-          ].map((s) => (
+          {SESSIONS.map((s) => (
             <div className="bsn-card" key={s.value}>
               <span className="bsn-card-num">{s.num}</span>
               <p className="bsn-card-title">{s.title}</p>
@@ -383,28 +444,7 @@ function BookSession() {
           <div className="bsn-info-col">
             <h2 className="bsn-big-lbl">WHAT TO <em>EXPECT</em></h2>
 
-            {[
-              {
-                icon: '✉',
-                name: 'Confirmation email',
-                desc: "You'll receive a booking confirmation within 24 hours of submitting.",
-              },
-              {
-                icon: '⏱',
-                name: 'Arrive 10 mins early',
-                desc: 'Give yourself time to warm up and check in with your coach before the session starts.',
-              },
-              {
-                icon: '🎒',
-                name: 'What to bring',
-                desc: 'Water bottle, training shoes, and a towel. All equipment is provided on-site.',
-              },
-              {
-                icon: '✕',
-                name: 'Cancellations',
-                desc: 'Cancel or reschedule up to 12 hours before your session at no charge.',
-              },
-            ].map((item) => (
+            {EXPECT_ITEMS.map((item) => (
               <div className="bsn-expect-item" key={item.name}>
                 <div className="bsn-expect-icon">
                   <span style={{ fontSize: 14, color: '#888' }}>{item.icon}</span>
