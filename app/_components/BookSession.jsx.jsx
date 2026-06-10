@@ -182,7 +182,7 @@ function BookSession() {
           font-size: 14px;
           letter-spacing: .18em;
           text-transform: uppercase;
-          color: #000;
+          color: #999;
           font-weight: 900;
         }
         .bsn-input,
