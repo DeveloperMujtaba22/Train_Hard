@@ -328,7 +328,7 @@ function BookSession() {
 
           {/* Form */}
           <div className="bsn-form-col">
-            <h2 className="bsn-big-lbl">YOUR<br /><em>DETAILS</em></h2>
+            <h2 className="bsn-big-lbl">YOUR <em>DETAILS</em></h2>
 
             <div className="bsn-row">
               <div className="bsn-field">
@@ -381,7 +381,7 @@ function BookSession() {
 
           {/* What to Expect */}
           <div className="bsn-info-col">
-            <h2 className="bsn-big-lbl">WHAT TO<br /><em>EXPECT</em></h2>
+            <h2 className="bsn-big-lbl">WHAT TO <em>EXPECT</em></h2>
 
             {[
               {
