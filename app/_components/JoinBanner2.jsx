@@ -78,7 +78,7 @@ export default function JoinBanner() {
       <section className="jb-section">
         <p className="jb-eyebrow">What We Believe In</p>
         <h2 className="jb-heading">Join The Primal Tribe Today!</h2>
-        <a href="/reserve" className="jb-btn">Reserve Your Spot</a>
+        <a href="/Reserve" className="jb-btn">Reserve Your Spot</a>
         <hr className="divide" />
       </section>
     </>
