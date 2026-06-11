@@ -26,36 +26,28 @@ export default function AboutPage() {
           white-space: nowrap;
         }
 
-        @media (max-width: 480px) {
-          .about-title-bar { padding: 28px 20px; }
-          .about-title {
-            font-size: clamp(60px, 18vw, 100px);
-            white-space: normal;
-          }
-        }
-
         /* ── Hero split ── */
         .about-hero {
           display: flex;
           width: 100%;
-          height: 420px;        /* fixed height — both sides match */
+          height: 420px;
         }
 
         .about-hero-left {
           flex: 0 0 56%;
-          background: #7B6CF0;
+          background: #7b6cf09c;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 28px 40px 28px;
+          padding: 28px 40px;
           box-sizing: border-box;
-          height: 100%;         /* fill the row */
+          height: 100%;
         }
 
         .about-tagline {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 900;
-          font-size: clamp(24px, 3vw, 40px);
+          font-size: clamp(28px, 3vw, 40px);
           line-height: 1.05;
           text-transform: uppercase;
           color: #0E0C18;
@@ -66,22 +58,23 @@ export default function AboutPage() {
         .about-vision-label {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 900;
-          font-size: 13px;
+          font-size: 30px;
           text-transform: uppercase;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           color: #0E0C18;
           margin: 0 0 10px;
         }
 
         .about-vision-body {
-          font-family: 'Outfit', sans-serif;
-          font-size: 13px;
-          font-weight: 400;
-          color: #0E0C18;
-          opacity: 0.7;
-          line-height: 1.75;
+          font-family: 'Barlow Condensed', sans-serif;
+          font-weight: 200;
+          font-size: clamp(15px, 1.4vw, 38px);
+          color: #000000d8;
+          opacity: 0.75;
+          line-height: 1.55;
           margin: 0;
-          max-width: 480px;
+          max-width: 580px;
+          letter-spacing: 0.01em;
         }
 
         /* ── Right image fills the full height ── */
@@ -93,14 +86,25 @@ export default function AboutPage() {
 
         .about-hero-right img {
           width: 100%;
-          height: 100%;         /* fill — no more 70% gap */
+          height: 100%;
           object-fit: cover;
           object-position: center top;
           display: block;
           filter: grayscale(100%);
         }
 
-        @media (max-width: 768px) {
+        /* ── MOBILE ── */
+        @media (max-width: 640px) {
+          .about-title-bar {
+            padding: 24px 20px 20px;
+          }
+
+          .about-title {
+            font-size: clamp(68px, 22vw, 100px);
+            white-space: normal;
+            line-height: 0.88;
+          }
+
           .about-hero {
             flex-direction: column;
             height: auto;
@@ -110,13 +114,51 @@ export default function AboutPage() {
             flex: unset;
             width: 100%;
             height: auto;
-            padding: 32px 24px;
-            min-height: 280px;
+            padding: 28px 20px 32px;
+            gap: 28px;
+            justify-content: flex-start;
+          }
+
+          .about-tagline {
+            font-size: clamp(38px, 11vw, 58px);
+            line-height: 1.0;
+          }
+
+          .about-vision-label {
+            font-size: 13px;
+            letter-spacing: 0.14em;
+            margin-bottom: 8px;
+          }
+
+          .about-vision-body {
+            font-size: clamp(17px, 4.5vw, 22px);
+            line-height: 1.5;
           }
 
           .about-hero-right {
             width: 100%;
-            height: 260px;
+            height: 280px;
+          }
+        }
+
+        /* ── TABLET ── */
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .about-hero {
+            height: auto;
+            min-height: 360px;
+          }
+
+          .about-hero-left {
+            padding: 28px 28px;
+          }
+
+          .about-tagline {
+            font-size: clamp(26px, 3.5vw, 36px);
+          }
+
+          .about-hero-right {
+            height: auto;
+            min-height: 360px;
           }
         }
       `}</style>
