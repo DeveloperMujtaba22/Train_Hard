@@ -89,7 +89,7 @@ function BookSession() {
           line-height: .95;
           margin: 0 0 16px;
         }
-        .bsn-h1 em { font-style: normal; color: #7B8FF5; }
+        .bsn-h1 em { font-style: normal; color: #7B6CF0; }
         .bsn-hero-sub {
           font-size: 15px;
           color: #555;
@@ -152,16 +152,16 @@ function BookSession() {
           transition: background .15s, color .15s, border-color .15s, transform .1s;
         }
         .bsn-card-btn:hover {
-          background: #7B8FF5;
+          background: #7B6CF0;
           color: #fff;
-          border-color: #7B8FF5;
+          border-color: #7B6CF0;
           transform: translateY(-1px);
         }
         .bsn-card-btn:active { transform: translateY(0); }
 
         /* ── Personal training strip ── */
         .bsn-pt-strip {
-          background: #7B8FF5;
+          background: #7B6CF0;
           padding: 24px 28px;
           display: flex;
           align-items: center;
@@ -222,7 +222,7 @@ function BookSession() {
           letter-spacing: .02em;
           margin: 0 0 28px;
         }
-        .bsn-big-lbl em { font-style: normal; color: #7B8FF5; }
+        .bsn-big-lbl em { font-style: normal; color: #7B6CF0; }
 
         /* ── Form fields ── */
         .bsn-field {

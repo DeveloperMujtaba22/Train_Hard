@@ -26,7 +26,7 @@ export default function Hero() {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 900;
           /* Mobile-first: fill the screen width */
-          font-size: clamp(56px, 14vw, 168px);
+          font-size: clamp(56px, 14vw, 165px);
           line-height: 0.9;
           letter-spacing: -0.01em;
           text-transform: uppercase;
