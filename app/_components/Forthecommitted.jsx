@@ -44,7 +44,7 @@ export default function ForTheCommitted() {
         .ftc-heading {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 900;
-          font-size: clamp(36px, 4vw, 56px);
+          font-size: clamp(36px, 4vw, 70px);
           line-height: 0.95;
           text-transform: uppercase;
           color: #0E0C18;
@@ -54,12 +54,12 @@ export default function ForTheCommitted() {
 
         .ftc-body {
           font-family: 'Outfit', sans-serif;
-          font-size: 15px;
+          font-size: 22px;
           font-weight: 400;
           color: #1A1525;
           opacity: 0.65;
           line-height: 1.75;
-          max-width: 360px;
+          max-width: 460px;
           margin: 0 0 40px;
         }
 
@@ -68,7 +68,7 @@ export default function ForTheCommitted() {
           align-items: center;
           gap: 8px;
           font-family: 'Outfit', sans-serif;
-          font-size: 11px;
+          font-size: 19px;
           font-weight: 600;
           letter-spacing: 0.18em;
           text-transform: uppercase;
@@ -134,7 +134,7 @@ export default function ForTheCommitted() {
         {/* Right — text */}
         <div className="ftc-content">
           <h2 className="ftc-heading">
-            For The<br />Committed
+            For The Committed
           </h2>
 
           <p className="ftc-body">
