@@ -66,12 +66,12 @@ export default function DiscoverPotential() {
                 className="text-black uppercase leading-tight mb-5"
                 style={{
                   fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(1.9rem, 3vw, 2.6rem)",
+                  fontSize: "clamp(4.9rem, 3vw, 2.6rem)",
                   letterSpacing: "0.02em",
                 }}
               >
                 Dynamic Open
-                <br />
+                
                 Gym
               </h2>
 
@@ -79,7 +79,7 @@ export default function DiscoverPotential() {
                 className="text-zinc-500 leading-relaxed"
                 style={{
                   fontFamily: "'Barlow', sans-serif",
-                  fontSize: "0.875rem",
+                  fontSize: "1rem",
                   paddingLeft: "0.75rem",
                   borderLeft: "none",
                 }}
